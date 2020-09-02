@@ -50,18 +50,14 @@ uint8_t count_leading_Zeros(uint8_t number)
     return result;
 }
 
-uint8_t count_leading_Ones(uint8_t number) //////////////////////////////////
+uint8_t count_leading_Ones(uint8_t number)
 {
     int total_bits = sizeof(number) * 8;
     int result = 0;
-
-
-
     while (!(number & (1 << (total_bits - 1))))
     {
         number = (number << 1);
     }
-
     while (number & (1 << (total_bits - 1)))
     {
         number = (number << 1);
@@ -71,7 +67,16 @@ uint8_t count_leading_Ones(uint8_t number) //////////////////////////////////
     return result;
 }
 
+uint8_t set_rightmost_zero_to_one(uint8_t number) {
+    if (number == 0) return 1;
+    return (number | (number + 1));
 
+}
+
+uint8_t set_rightmost_one_to_zero(uint8_t number) {
+    if (number == 0) return 0;
+    return (number & (number - 1));
+}
 
 uint8_t setRightmostUnsetBit(uint8_t number)
 {
